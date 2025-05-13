@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Mestre Zion</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- jQuery e API de localização -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+  window.pixelId = "67f8891f8cbc57b31ad975de";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+<script>
+  window.vars = window.vars || {};
+
+  // função para começar o chat depois de mostrar a cidade
+  function iniciarChatDepois() {
+    const script = document.createElement('script');
+    script.src = "assets/js/script.js";
+    document.body.appendChild(script);
+  }
+
+  $(window).on('load', function () {
+    $.ajax({
+      url: "https://ipinfo.io/json?token=a2c4274b6d63c2",
+      dataType: "jsonp",
+      success: function (location) {
+        const cidade = location.city || "uma cidade especial";
+        window.vars["localizacao"] = cidade;
+
+        const container = document.getElementById("quiz-step");
+        const msg = document.createElement("div");
+        container.appendChild(msg);
+
+        // espera 2 segundos e inicia o chat
+        setTimeout(() => {
+          iniciarChatDepois();
+        }, 2000);
+      },
+      error: function () {
+        window.vars["localizacao"] = "uma cidade especial";
+        iniciarChatDepois();
+      }
+    });
+  });
+</script>
+</head>
+
+<body>
+  <header class="whatsapp-header">
+    <div class="profile-info">
+      <img src="assets/images/avatar-mestre-zion.png" alt="Mestre Zion" class="avatar" />
+      <div class="text-info">
+        <div class="name">
+          Mestre Zion <img src="assets/images/verificado.png" alt="Verificado" class="verified" />
+        </div>
+        <div class="status">online</div>
+      </div>
+    </div>
+    <div class="menu-dots">⋮</div>
+  </header>
+
+  <div id="quiz-container">
+    <div id="quiz-step"></div>
+  </div>
+
+  <!-- Seu script principal -->
+  <script src="assets/js/script.js"></script>
+
+<script>
+  window.addEventListener("load", () => {
+    const params = new URLSearchParams(window.location.search);
+
+    const nome = params.get("nome") || "Desconhecido";
+    const signo = params.get("signo") || "Não informado";
+
+    fetch("https://chatbot-backend-veii.onrender.com/api/salvar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nome,
+        signo,
+        utm_source: params.get("utm_source"),
+        utm_campaign: params.get("utm_campaign"),
+        utm_medium: params.get("utm_medium"),
+        utm_term: params.get("utm_term"),
+        utm_content: params.get("utm_content"),
+        xcod: params.get("xcod")
+      })
+    });
+  });
+</script>
+
+</body>
+</html>
