@@ -39,17 +39,17 @@ app.get('/usuarios', (req, res) => {
   let html = '<h1>Usuários Registrados</h1><table border="1" cellpadding="5"><tr><th>Nome</th><th>Signo</th><th>UTMs</th><th>Xcod</th><th>Data/Hora</th></tr>';
   dados.forEach(user => {
     html += `<tr>
-      <td>\${user.nome || ''}</td>
-      <td>\${user.signo || ''}</td>
+      <td>${user.nome || ''}</td>
+      <td>${user.signo || ''}</td>
       <td>
-        source: \${user.utm_source || ''}<br>
-        campaign: \${user.utm_campaign || ''}<br>
-        medium: \${user.utm_medium || ''}<br>
-        term: \${user.utm_term || ''}<br>
-        content: \${user.utm_content || ''}
+        source: ${user.utm_source || ''}<br>
+        campaign: ${user.utm_campaign || ''}<br>
+        medium: ${user.utm_medium || ''}<br>
+        term: ${user.utm_term || ''}<br>
+        content: ${user.utm_content || ''}
       </td>
-      <td>\${user.xcod || ''}</td>
-      <td>\${user.dataHora}</td>
+      <td>${user.xcod || ''}</td>
+      <td>${user.dataHora}</td>
     </tr>`;
   });
   html += '</table>';
