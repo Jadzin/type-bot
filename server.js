@@ -47,7 +47,7 @@ app.get('/usuarios', (req, res) => {
     return d.toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
   };
 
-  let html = \`
+  let html = `
   <html>
     <head>
       <meta charset="utf-8" />
@@ -73,30 +73,30 @@ app.get('/usuarios', (req, res) => {
             <th>Data/Hora</th>
           </tr>
         </thead>
-        <tbody>\`;
+        <tbody>`;
 
   for (const user of dados) {
-    html += \`
+    html += `
       <tr>
-        <td>\${user.nome || ""}</td>
-        <td>\${user.signo || ""}</td>
+        <td>${user.nome || ""}</td>
+        <td>${user.signo || ""}</td>
         <td>
-          source: \${user.utm_source || ""}<br>
-          campaign: \${user.utm_campaign || ""}<br>
-          medium: \${user.utm_medium || ""}<br>
-          term: \${user.utm_term || ""}<br>
-          content: \${user.utm_content || ""}
+          source: ${user.utm_source || ""}<br>
+          campaign: ${user.utm_campaign || ""}<br>
+          medium: ${user.utm_medium || ""}<br>
+          term: ${user.utm_term || ""}<br>
+          content: ${user.utm_content || ""}
         </td>
-        <td>\${user.xcod || ""}</td>
-        <td>\${formatarData(user.dataHora)}</td>
-      </tr>\`;
+        <td>${user.xcod || ""}</td>
+        <td>${formatarData(user.dataHora)}</td>
+      </tr>`;
   }
 
-  html += \`
+  html += `
         </tbody>
       </table>
     </body>
-  </html>\`;
+  </html>`;
 
   res.send(html);
 });
