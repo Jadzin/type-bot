@@ -54,8 +54,9 @@ body {
   padding: 20px;
   max-width: 600px;
   margin-inline: auto;
-  max-height: 100vh;
+  height: calc(100vh - 60px);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 #quiz-step {
@@ -86,6 +87,7 @@ body {
   margin-left: auto;
   text-align: left;
   min-width: 120px;
+  padding-bottom: 30px;
 }
 
 .text-content {
@@ -102,11 +104,13 @@ body {
   gap: 4px;
   font-size: 11px;
   color: grey;
+  line-height: 1;
 }
-.meta-info svg {
-  width: 14px;
-  height: 14px;
-  fill: #34B7F1;
+.meta-info .double-check {
+  width: 35px;
+  height: 35px;
+  margin-top: 5px;
+  object-fit: contain;
 }
 
 .typing-bubble {
@@ -149,6 +153,7 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 5px;
   max-width: 100%;
+  margin-bottom: 20px;
 }
 
 /* SOMENTE BOTÃO (ex: SIM) */
@@ -199,7 +204,7 @@ body {
   background: #ffffff;
   color: #333;
   border-radius: 16px;
-  padding: 10px 14px;
+  padding: 14px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -220,8 +225,15 @@ body {
   background: none;
   border: none;
   color: #075E54;
-  font-size: 22px;
   cursor: pointer;
+  font-size: 22px;
+  padding: 0;
+  margin-right: 12px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .waveform {
@@ -256,6 +268,7 @@ body {
 
 .avatar-container {
   position: relative;
+  margin-left: 20px;
 }
 
 .avatar-container .avatar {
@@ -265,15 +278,7 @@ body {
   object-fit: cover;
 }
 
-.mic-icon {
-  position: absolute;
-  bottom: -4px;
-  right: -4px;
-  background: #ffffff;
-  color: #4ea1ff;
-  font-size: 14px;
-  border-radius: 50%;
-}
+
 
 .timestamp {
   font-size: 11px;
